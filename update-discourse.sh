@@ -1,8 +1,6 @@
 #!/bin/bash
-cd ~/discourse/plugins/discourse-theme
-git pull
-cd ~/discourse/plugins/discourse-plugin-tagger
-git pull
+cd ~/discourse/plugins/
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c 'cd $0; git pull;' {} \;
 cd ~/discourse
 bundle install
 bundle exec rake db:migrate
